@@ -23,3 +23,7 @@ describe('Sample Component should', () => {
     expect(h3Element).toHaveTextContent(defaultContent);
   });
 });
+
+//  some useful matchers
+//  expect(el).toContainHTML('<div>');
+//  expect(el).not.toBe(...)
