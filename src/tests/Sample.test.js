@@ -2,9 +2,10 @@ import { render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Sample from '../components/Sample';
 
-//  npm i --save-dev @testing-library/jest-dom
-//  npm i --save-dev @testing-library/react react-test-renderer
-//  line 1 & 2
+//  This is a life cycle method of testing
+afterEach(() => {
+  cleanup(); //  cleanup will reset the harness
+});
 
 describe('Sample Component should', () => {
   it('render the title when showTitle is true', () => {
