@@ -7,13 +7,18 @@ import Sample from '../components/Sample';
 //  line 1 & 2
 
 describe('Sample Component should', () => {
-  it('render to the screen', () => {
-    render(<Sample />);
-    const h3Element = screen.getByTestId('h3-el');
-    expect(h3Element).toBeInTheDocument();
-    expect(h3Element.textContent).toBe('Hello there!');
+  it('render the title when showTitle is true', () => {
+    const title = 'Welcome to Jest Testing';
+    render(<Sample title={title} showTitle />);
+    const h3Element = screen.getByTestId('h3-title');
+    expect(h3Element).toHaveTextContent(title);
+  });
 
-    //    also possible
-    expect(h3Element).toHaveTextContent('Hello there!');
+  it('render the default text when showTitle is false', () => {
+    const title = 'Welcome to Jest Testing';
+    const defaultContent = 'Default content';
+    render(<Sample title={title} showTitle={false} />);
+    const h3Element = screen.getByTestId('h3-default');
+    expect(h3Element).toHaveTextContent(defaultContent);
   });
 });

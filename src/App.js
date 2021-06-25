@@ -4,7 +4,7 @@ import Sample from './components/Sample';
 function App() {
   return (
     <div className='App'>
-      <Sample />
+      <Sample title='Hello there!' />
     </div>
   );
 }
