@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Sample = (props) => {
+  const [counter, setCounter] = useState(0);
+
+  const increment = () => {
+    setCounter((v) => v + 1);
+  };
+
+  const decrement = () => {
+    setCounter((v) => v - 1);
+  };
   return (
     <>
-      {props.showTitle ? (
-        <h3 data-testid='h3-title'>{props.title}</h3>
-      ) : (
-        <h3 data-testid='h3-default'>Default content</h3>
-      )}
+      <h3>
+        Counter: <span data-testid='counter-span'>{counter}</span>
+      </h3>
+
+      <button data-testid='btn-inc' onClick={increment}>
+        Increment
+      </button>
+      <button data-testid='btn-dec' onClick={decrement}>
+        Decrement
+      </button>
     </>
   );
 };

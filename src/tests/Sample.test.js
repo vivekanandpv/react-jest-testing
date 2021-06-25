@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Sample from '../components/Sample';
 
@@ -8,22 +8,25 @@ afterEach(() => {
 });
 
 describe('Sample Component should', () => {
-  it('render the title when showTitle is true', () => {
-    const title = 'Welcome to Jest Testing';
-    render(<Sample title={title} showTitle />);
-    const h3Element = screen.getByTestId('h3-title');
-    expect(h3Element).toHaveTextContent(title);
+  it('increment the counter when increment is clicked', () => {
+    render(<Sample />);
+
+    const inc = screen.getByTestId('btn-inc');
+
+    const span = screen.getByTestId('counter-span');
+
+    fireEvent.click(inc);
+    expect(span).toHaveTextContent('1');
   });
 
-  it('render the default text when showTitle is false', () => {
-    const title = 'Welcome to Jest Testing';
-    const defaultContent = 'Default content';
-    render(<Sample title={title} showTitle={false} />);
-    const h3Element = screen.getByTestId('h3-default');
-    expect(h3Element).toHaveTextContent(defaultContent);
+  it('decrement the counter when decrement is clicked', () => {
+    render(<Sample />);
+
+    const dec = screen.getByTestId('btn-dec');
+
+    const span = screen.getByTestId('counter-span');
+
+    fireEvent.click(dec);
+    expect(span).toHaveTextContent('-1');
   });
 });
-
-//  some useful matchers
-//  expect(el).toContainHTML('<div>');
-//  expect(el).not.toBe(...)
