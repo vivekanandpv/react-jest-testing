@@ -1,0 +1,6 @@
+For skipping a test or suite: attach .skip (for example, describe.skip(...) or it.skip(...))
+For running select test: attach .only (for example, it.only(...))
+
+For coverage:
+npm run test -- --coverage --watchAll=false
+(Please note there is -- in the middle)
