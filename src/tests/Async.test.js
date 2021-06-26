@@ -41,9 +41,9 @@ describe('Asynchronous test should', () => {
 
   it('can work with failing async test', async () => {
     try {
-      const result = await foo();
+      const result = await bar();
     } catch (e) {
-      expect(e).toMatch('oops!');
+      expect(e.message).toBe('oops!');
     }
   });
 });
